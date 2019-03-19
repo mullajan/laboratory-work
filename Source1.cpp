@@ -8,47 +8,47 @@ private:
 public:
 	Fraction() { chis = 0; znam = 0; }
 	Fraction(int c, int z) { chis = c; znam = z; }
-	Fraction(const Fraction &ob);  // конструктор копии
+	Fraction(const Fraction &ob);  // ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЄГ®ГЇГЁГЁ
 	void Enter();
 	void Show();
-	Fraction operator = (Fraction);
-	Fraction operator + (Fraction);
-	Fraction operator - (Fraction);
-	Fraction operator * (Fraction);
-	Fraction operator / (Fraction);
+	      Fraction operator = (Fraction);
+	      Fraction operator + (Fraction);
+	      Fraction operator - (Fraction);
+	      Fraction operator * (Fraction);
+	      Fraction operator / (Fraction);
 	bool operator != (Fraction);
 	bool operator > (Fraction);
 	bool operator < (Fraction);
 	bool operator == (Fraction);
-	int NOD(Fraction);   // наибольший общий делитель
-	int NOD_int(int, int); // НОД для использования в других функциях
-	int NOK_int(int, int); // НОК для использования в других функциях
-	int NOK(Fraction); // наименьшие общие кратное
+	int NOD(Fraction);   // Г­Г ГЁГЎГ®Г«ГјГёГЁГ© Г®ГЎГ№ГЁГ© Г¤ГҐГ«ГЁГІГҐГ«Гј
+	int NOD_int(int, int); // ГЌГЋГ„ Г¤Г«Гї ГЁГ±ГЇГ®Г«ГјГ§Г®ГўГ Г­ГЁГї Гў Г¤Г°ГіГЈГЁГµ ГґГіГ­ГЄГ¶ГЁГїГµ
+	int NOK_int(int, int); // ГЌГЋГЉ Г¤Г«Гї ГЁГ±ГЇГ®Г«ГјГ§Г®ГўГ Г­ГЁГї Гў Г¤Г°ГіГЈГЁГµ ГґГіГ­ГЄГ¶ГЁГїГµ
+	int NOK(Fraction); // Г­Г ГЁГ¬ГҐГ­ГјГёГЁГҐ Г®ГЎГ№ГЁГҐ ГЄГ°Г ГІГ­Г®ГҐ
 };
 
-// перегрузка не равно
+// ГЇГҐГ°ГҐГЈГ°ГіГ§ГЄГ  Г­ГҐ Г°Г ГўГ­Г®
 bool Fraction::operator !=(Fraction f2) 
 {
-	int z = NOK_int(this->znam, f2.znam); // находим НОК
-	this->chis = this->chis * (z / this->znam); // приводим числитель
-	f2.chis = f2.chis * (z / f2.znam);  // приводим знаменатель
-	if (this->chis != f2.chis) // если знаменатели не равны
+	int z = NOK_int(this->znam, f2.znam); // Г­Г ГµГ®Г¤ГЁГ¬ ГЌГЋГЉ
+	this->chis = this->chis * (z / this->znam); // ГЇГ°ГЁГўГ®Г¤ГЁГ¬ Г·ГЁГ±Г«ГЁГІГҐГ«Гј
+	f2.chis = f2.chis * (z / f2.znam);  // ГЇГ°ГЁГўГ®Г¤ГЁГ¬ Г§Г­Г Г¬ГҐГ­Г ГІГҐГ«Гј
+	if (this->chis != f2.chis) // ГҐГ±Г«ГЁ Г§Г­Г Г¬ГҐГ­Г ГІГҐГ«ГЁ Г­ГҐ Г°Г ГўГ­Г»
 		return 1;
 	else
 		return 0;
 
 }
-// перегрузка  равно
+// ГЇГҐГ°ГҐГЈГ°ГіГ§ГЄГ   Г°Г ГўГ­Г®
 bool Fraction::operator == (Fraction f2)
 {
-	if (this->znam == f2.znam && this->chis == f2.chis) // если знаменатели и числители равны, то и дроби равны
+	if (this->znam == f2.znam && this->chis == f2.chis) // ГҐГ±Г«ГЁ Г§Г­Г Г¬ГҐГ­Г ГІГҐГ«ГЁ ГЁ Г·ГЁГ±Г«ГЁГІГҐГ«ГЁ Г°Г ГўГ­Г», ГІГ® ГЁ Г¤Г°Г®ГЎГЁ Г°Г ГўГ­Г»
 		return 1;
 	else
 	{
-		int z = NOK_int(this->znam, f2.znam); //находим НОК
+		int z = NOK_int(this->znam, f2.znam); //Г­Г ГµГ®Г¤ГЁГ¬ ГЌГЋГЉ
 		this->chis = this->chis * (z / this->znam);
 		f2.chis = f2.chis * (z / f2.znam);
-		if (this->chis == f2.chis) // если числители равны
+		if (this->chis == f2.chis) // ГҐГ±Г«ГЁ Г·ГЁГ±Г«ГЁГІГҐГ«ГЁ Г°Г ГўГ­Г»
 			return 1;
 		else
 			return 0;
@@ -56,14 +56,14 @@ bool Fraction::operator == (Fraction f2)
 
 	return 0;
 }
-// перегрузка меньше
+// ГЇГҐГ°ГҐГЈГ°ГіГ§ГЄГ  Г¬ГҐГ­ГјГёГҐ
 bool Fraction::operator<(Fraction f2)
 {
 
-	if (this->znam != f2.znam && this->chis != f2.chis) // если разные знаменатели и числители
+	if (this->znam != f2.znam && this->chis != f2.chis) // ГҐГ±Г«ГЁ Г°Г Г§Г­Г»ГҐ Г§Г­Г Г¬ГҐГ­Г ГІГҐГ«ГЁ ГЁ Г·ГЁГ±Г«ГЁГІГҐГ«ГЁ
 	{
-		int z = NOK_int(this->znam, f2.znam); // НОК
-		this->chis = this->chis * (z / this->znam); // приводим к общему знаменателю
+		int z = NOK_int(this->znam, f2.znam); // ГЌГЋГЉ
+		this->chis = this->chis * (z / this->znam); // ГЇГ°ГЁГўГ®Г¤ГЁГ¬ ГЄ Г®ГЎГ№ГҐГ¬Гі Г§Г­Г Г¬ГҐГ­Г ГІГҐГ«Гѕ
 		f2.chis = f2.chis * (z / f2.znam);
 		if (this->chis < f2.chis)
 			return 1;
@@ -71,14 +71,14 @@ bool Fraction::operator<(Fraction f2)
 			return 0;
 	}
 
-	if (this->znam == f2.znam) // если у дробей одинаковые знаменатели
+	if (this->znam == f2.znam) // ГҐГ±Г«ГЁ Гі Г¤Г°Г®ГЎГҐГ© Г®Г¤ГЁГ­Г ГЄГ®ГўГ»ГҐ Г§Г­Г Г¬ГҐГ­Г ГІГҐГ«ГЁ
 	{
 		if (this->chis < f2.chis)
 			return 1;
 		else
 			return 0;
 	}
-	if (this->chis == f2.chis) // если одинаковые числители
+	if (this->chis == f2.chis) // ГҐГ±Г«ГЁ Г®Г¤ГЁГ­Г ГЄГ®ГўГ»ГҐ Г·ГЁГ±Г«ГЁГІГҐГ«ГЁ
 	{
 		if (this->znam < f2.znam)
 			return 1;
@@ -88,7 +88,7 @@ bool Fraction::operator<(Fraction f2)
 	else
 		return 0;
 }
-// перегрузка больше
+// ГЇГҐГ°ГҐГЈГ°ГіГ§ГЄГ  ГЎГ®Г«ГјГёГҐ
 bool Fraction::operator>(Fraction f2)
 {
 
@@ -120,7 +120,7 @@ bool Fraction::operator>(Fraction f2)
 	else
 		return 0;
 }
-//умножение
+//ГіГ¬Г­Г®Г¦ГҐГ­ГЁГҐ
 Fraction Fraction ::operator*(Fraction f2) 
 {                                          
 	this->chis = this->chis * f2.chis;
@@ -128,24 +128,24 @@ Fraction Fraction ::operator*(Fraction f2)
 	return *this;
 
 }
-//деление
+//Г¤ГҐГ«ГҐГ­ГЁГҐ
 Fraction Fraction ::operator / (Fraction f2) 
 {
-	this->chis = this->chis * f2.znam; // числитель первой на знаменатель второй
-	this->znam = this->znam * f2.chis; // знаменатель первой на числитель второй
+	this->chis = this->chis * f2.znam; // Г·ГЁГ±Г«ГЁГІГҐГ«Гј ГЇГҐГ°ГўГ®Г© Г­Г  Г§Г­Г Г¬ГҐГ­Г ГІГҐГ«Гј ГўГІГ®Г°Г®Г©
+	this->znam = this->znam * f2.chis; // Г§Г­Г Г¬ГҐГ­Г ГІГҐГ«Гј ГЇГҐГ°ГўГ®Г© Г­Г  Г·ГЁГ±Г«ГЁГІГҐГ«Гј ГўГІГ®Г°Г®Г©
 	return *this;
 }
-//сумма
+//Г±ГіГ¬Г¬Г 
 Fraction Fraction::operator+(Fraction f2)
 {
-	int z = NOK_int(this->znam, f2.znam); // НОК
+	int z = NOK_int(this->znam, f2.znam); // ГЌГЋГЉ
 	this->chis = this->chis*(z / this->znam);
 	f2.chis = f2.chis * (z / f2.znam);
 	this->chis = this->chis + f2.chis;
 	this->znam = z;
 	return *this;
 }
-//вычитание
+//ГўГ»Г·ГЁГІГ Г­ГЁГҐ
 Fraction Fraction::operator - (Fraction f2)
 {
 	int z = NOK_int(this->znam, f2.znam);
@@ -155,14 +155,14 @@ Fraction Fraction::operator - (Fraction f2)
 	this->znam = z;
 	return *this;
 }
-//присвоение
+//ГЇГ°ГЁГ±ГўГ®ГҐГ­ГЁГҐ
 Fraction Fraction:: operator = (Fraction f2)
 {
 	this->chis = f2.chis;
 	this->znam = f2.znam;
 	return *this;
 }
-// хороший алгоритм по нахождению НОД
+// ГµГ®Г°Г®ГёГЁГ© Г Г«ГЈГ®Г°ГЁГІГ¬ ГЇГ® Г­Г ГµГ®Г¦Г¤ГҐГ­ГЁГѕ ГЌГЋГ„
 int Fraction::NOD_int(int x, int y) 
 {
 	while (x && y)
@@ -194,21 +194,21 @@ int Fraction::NOK_int(int x, int y)
 	return x / NOD_int(x, y)*y;
 }
 
-Fraction::Fraction(const Fraction &ob) // конструктор копии
+Fraction::Fraction(const Fraction &ob) // ГЄГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГЄГ®ГЇГЁГЁ
 {
 	this->chis = ob.chis;
 	this->znam = ob.znam;
 }
-//-------Ввод дробей-------
+//-------Г‚ГўГ®Г¤ Г¤Г°Г®ГЎГҐГ©-------
 void Fraction::Enter()  
 {
-	std::cout << "Введите числитель дроби " << std::endl;
+	std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г·ГЁГ±Г«ГЁГІГҐГ«Гј Г¤Г°Г®ГЎГЁ " << std::endl;
 	std::cin >> chis;
-	std::cout << "Введите знаменатель " << std::endl;
+	std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г§Г­Г Г¬ГҐГ­Г ГІГҐГ«Гј " << std::endl;
 	std::cin >> znam;
 	
 }
-//------Вывод дробей-----
+//------Г‚Г»ГўГ®Г¤ Г¤Г°Г®ГЎГҐГ©-----
 void Fraction::Show() 
 {
 	std::cout << chis << "/" << znam << " ";
@@ -218,26 +218,26 @@ int main()
 	Fraction f1, f2, f3;
 	Fraction f11,f12,f13,f14;
 	setlocale(0, "rus");
-	std::cout << "Ввод дробей " << std::endl;
+	std::cout << "Г‚ГўГ®Г¤ Г¤Г°Г®ГЎГҐГ© " << std::endl;
 	f1.Enter(); f2.Enter();
 	f11 = f1; f12 = f1; f13 = f1,f14=f1;
-	std::cout << "Сложение дробей ";
+	std::cout << "Г‘Г«Г®Г¦ГҐГ­ГЁГҐ Г¤Г°Г®ГЎГҐГ© ";
 	f1.Show(); std::cout << " + "; f2.Show();
 	std::cout << " = ";f3 = f1 + f2; f3.Show();
 	std::cout << std::endl;
-	std::cout << "Вычитание дробей ";
+	std::cout << "Г‚Г»Г·ГЁГІГ Г­ГЁГҐ Г¤Г°Г®ГЎГҐГ© ";
 	f11.Show();  std::cout << " - "; f2.Show();
 	std::cout << " = "; f3 = f11 - f2; f3.Show();
 	std::cout << std::endl;
-	std::cout << "Деление дробей ";
+	std::cout << "Г„ГҐГ«ГҐГ­ГЁГҐ Г¤Г°Г®ГЎГҐГ© ";
 	f12.Show(); std::cout << " / ";  f2.Show();
 	std::cout << " = "; f3 = f12 / f2; f3.Show();
 	std::cout << std::endl;
-	std::cout << "Умножение дробей ";
+	std::cout << "Г“Г¬Г­Г®Г¦ГҐГ­ГЁГҐ Г¤Г°Г®ГЎГҐГ© ";
 	f13.Show();  std::cout << " * "; f2.Show(); 
 	std::cout << " = "; f3 = f13 * f2; f3.Show();
 	std::cout << std::endl;
-	std::cout << "Присвоение дробей ";
+	std::cout << "ГЏГ°ГЁГ±ГўГ®ГҐГ­ГЁГҐ Г¤Г°Г®ГЎГҐГ© ";
 	f3 = f1 = f2;
 	std::cout << "f1= ";
 	f1.Show(); std::cout << ", f2= "; f2.Show();
